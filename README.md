@@ -2,6 +2,7 @@ Serveo
 =======================================================================
 
 [![GoDoc](https://godoc.org/github.com/Axelen123/serveo?status.svg)](https://godoc.org/github.com/Axelen123/serveo)
+[![Build Status](https://travis-ci.org/Axelen123/serveo.svg?branch=master)](https://travis-ci.org/Axelen123/serveo)
 
 - [What is Serveo?](#what-is-serveo)
 - [Installation](#installation)
