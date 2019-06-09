@@ -20,6 +20,7 @@ func parse() *serveo.Args {
 
 	config := parser.String("c", "config", &argparse.Options{Required: false, Help: "Custom config path", Default: serveo.ConfigName})
 	domain := parser.String("d", "domain", &argparse.Options{Required: false, Help: "Sets domain/alias. Usage: -d myalias or --domain mydomain.com", Default: usr.Username})
+	ver := parser.Flag("v", "version", &argparse.Options{Required: false, Help: "Shows version"})
 
 	init := parser.NewCommand("init", "Generate config file")
 
@@ -37,6 +38,11 @@ func parse() *serveo.Args {
 	if err != nil {
 		fmt.Print(parser.Usage(err))
 		os.Exit(1)
+	}
+
+	if *ver {
+		fmt.Printf("%v, commit: %v, built: %v\n", version, commit, date)
+		os.Exit(0)
 	}
 	return &serveo.Args{Commands: serveo.Commands{Init: init.Happened(), SSH: ssh.Happened(), HTTP: http.Happened()}, Flags: serveo.Flags{Config: *config, Port: *port, Domain: *domain}}
 }

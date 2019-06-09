@@ -8,6 +8,12 @@ import (
 	"github.com/Axelen123/serveo/internal"
 )
 
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+)
+
 func main() {
 	args := parse()
 	if args.Commands.Init {
