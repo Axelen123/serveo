@@ -27,8 +27,13 @@ func parse() *serveo.Args {
 
 	http := parser.NewCommand("http", "Expose HTTP Server")
 	port := http.Int("p", "port", &argparse.Options{Required: false, Help: "Set port", Default: 80})
-
-	err = parser.Parse(os.Args)
+	args := os.Args
+	// Append empty string if os.Args only contains the command name.
+	// This is because argparse will give [sub]command required error otherwise.
+	if len(args) == 1 {
+		args = append(args, "")
+	}
+	err = parser.Parse(args)
 	if err != nil {
 		fmt.Print(parser.Usage(err))
 		os.Exit(1)
