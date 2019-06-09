@@ -11,7 +11,7 @@ Serveo
 - [License](#license)
 
 ## What is Serveo?
-This is an open source (unofficial) CLI for serveo.net,
+This is an open source (unofficial) CLI for [serveo.net](https://serveo.net),
 a service that allows you to expose local servers without port forwarding.
 
 ## Installation
@@ -158,7 +158,7 @@ You can find reference documentation at [godoc](https://godoc.org/github.com/Axe
 
 Note: by contributing code to the Redis project in any form, including sending a pull request via Github, a code fragment or patch via private email or public discussion groups, you agree to release your code under the terms of the MIT license that you can find in the [LICENSE](LICENSE) file included in the source distribution.
 
-See CONTRIBUTING.md for more info.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more info.
 
 ## License
 
