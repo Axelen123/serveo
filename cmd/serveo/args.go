@@ -15,7 +15,7 @@ func parse() *serveo.Args {
 
 	usr, err := user.Current()
 	if err != nil {
-		internal.Error(err)
+		internal.Error("cannot get user", err)
 	}
 
 	config := parser.String("c", "config", &argparse.Options{Required: false, Help: "Custom config path", Default: serveo.ConfigName})
@@ -25,10 +25,10 @@ func parse() *serveo.Args {
 
 	ssh := parser.NewCommand("ssh", "Expose SSH")
 
-	err := parser.Parse(os.Args)
+	err = parser.Parse(os.Args)
 	if err != nil {
 		fmt.Print(parser.Usage(err))
 		os.Exit(1)
 	}
-	return &serveo.Args{Commands: serveo.Commands{Init: init.Happened(), SSH: ssh.Happened()}, Flags: serveo.Flags{Config: *config, Domain: *domain}}}
+	return &serveo.Args{Commands: serveo.Commands{Init: init.Happened(), SSH: ssh.Happened()}, Flags: serveo.Flags{Config: *config, Domain: *domain}}
 }
