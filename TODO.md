@@ -5,5 +5,6 @@
 - Examples
 - Args
 - TCP in CLI
+- CI
 - Config docs
 - deb pkg
