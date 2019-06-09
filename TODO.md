@@ -1,0 +1,9 @@
+- Parse and print HTTP output
+- Add unit tests
+- Add logging
+- More docs
+- Examples
+- Args
+- TCP in CLI
+- Config docs
+- deb pkg
