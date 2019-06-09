@@ -52,6 +52,7 @@ snapcrafts:
     license: MIT
     confinement: strict
     base: core18
+    publish: true
 archives:
 - replacements:
     darwin: Darwin
