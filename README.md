@@ -82,6 +82,15 @@ serveo ssh
 serveo ssh -d hello
 ```
 
+Use these commands to ssh into it:
+```sh
+# For OpenSSH 7.3 or newer:
+ssh -J serveo.net username@mydomainoralias
+
+# For OpenSSH 7.2 or older:
+ssh -o ProxyCommand="ssh -W mydomainoralias:22 serveo.net" username@mydomainoralias
+```
+
 ### Config
 
 The cli also supports config files, to initialize one you need to run:
