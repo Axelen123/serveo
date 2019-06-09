@@ -1,5 +1,6 @@
 {
   "http": 80,
   "ssh": false,
+  "domain": "",
   "tcp": []
 }
