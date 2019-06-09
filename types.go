@@ -12,7 +12,7 @@ type Config struct {
 	HTTP     int        `json:"http"`
 	SSH      bool       `json:"ssh"`
 	Domain   string     `json:"domain"`
-	Forwards []Forwards `json:"forwards"`
+	TCP []TCP `json:"tcp"`
 }
 
 // GetConfig reads and marshals the config file
@@ -41,7 +41,7 @@ func (e *Endpoint) String() string {
 }
 
 // Forwards holds JSON data for forwarded ports
-type Forwards struct {
+type TCP struct {
 	Local  Endpoint `json:"local"`
 	Remote Endpoint `json:"remote"`
 }
