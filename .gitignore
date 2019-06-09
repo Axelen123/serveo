@@ -2,7 +2,7 @@
 snap.login
 
 # Binaries for programs and plugins
-dist
+dist/
 /serveo
 *.exe
 *.exe~
