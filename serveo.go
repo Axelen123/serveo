@@ -32,7 +32,6 @@ func Start(config *Config) {
 		args = append(args, "-R", forwardStr(f))
 	}
 	args = append(args, "serveo.net")
-	fmt.Println(args)
 	cmd := exec.Command("ssh", args...)
 	var waitStatus syscall.WaitStatus
 	// TODO: add log output
