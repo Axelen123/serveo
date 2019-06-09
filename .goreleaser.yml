@@ -38,6 +38,7 @@ nfpms:
 snapcrafts:
   -
     id: serveo
+    name: serveo
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     replacements:
       amd64: 64-bit
