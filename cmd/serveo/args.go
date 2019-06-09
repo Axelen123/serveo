@@ -5,8 +5,8 @@ import (
 	"os"
 	"os/user"
 
-	serveo "github.com/Axelen123/serveo/pkg"
-	internal "github.com/Axelen123/serveo/internal"
+	"github.com/Axelen123/serveo"
+	"github.com/Axelen123/serveo/internal"
 	"github.com/akamensky/argparse"
 )
 

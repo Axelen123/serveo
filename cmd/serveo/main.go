@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os/user"
 
-	internal "github.com/Axelen123/serveo/internal"
-	serveo "github.com/Axelen123/serveo/pkg"
+	"github.com/Axelen123/serveo"
+	"github.com/Axelen123/serveo/internal"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 		return
 	} else if args.Commands.SSH {
 		fmt.Println("Exposing SSH server...")
-		
+
 	}
 	conf, err := serveo.GetConfig(args.Flags.Config)
 	if err != nil {
