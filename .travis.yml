@@ -9,8 +9,7 @@ git:
 go:
   - 1.12.x
 env:
-- PATH=/snap/bin:$PATH
-- GO111MODULE=on
+- PATH=/snap/bin:$PATH GO111MODULE=on
 install: sudo snap install snapcraft --classic
 services:
 - docker
