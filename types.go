@@ -9,10 +9,10 @@ import (
 
 // Config holds the config
 type Config struct {
-	HTTP     int        `json:"http"`
-	SSH      bool       `json:"ssh"`
-	Domain   string     `json:"domain"`
-	TCP []TCP `json:"tcp"`
+	HTTP   int    `json:"http"`
+	SSH    bool   `json:"ssh"`
+	Domain string `json:"domain"`
+	TCP    []TCP  `json:"tcp"`
 }
 
 // GetConfig reads and marshals the config file
@@ -27,6 +27,13 @@ func GetConfig(filename string) (*Config, error) {
 
 	conf := new(Config)
 	err = json.Unmarshal(data, conf)
+	if err == nil {
+		for _, f := range conf.TCP {
+			if f.Local.Host == "" {
+				f.Local.Host = "localhost"
+			}
+		}
+	}
 	return conf, err
 }
 
@@ -37,10 +44,15 @@ type Endpoint struct {
 }
 
 func (e *Endpoint) String() string {
-	return e.Host + ":" + strconv.Itoa(e.Port)
+	port := strconv.Itoa(e.Port)
+
+	if e.Host != "" {
+		return e.Host + ":" + port
+	}
+	return port
 }
 
-// Forwards holds JSON data for forwarded ports
+// TCP holds JSON data for forwarded ports
 type TCP struct {
 	Local  Endpoint `json:"local"`
 	Remote Endpoint `json:"remote"`
@@ -49,7 +61,7 @@ type TCP struct {
 // Commands holds parsed commands
 type Commands struct {
 	Init bool
-	SSH bool
+	SSH  bool
 }
 
 // Flags holds parsed flags
