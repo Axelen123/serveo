@@ -4,10 +4,15 @@ addons:
     packages:
     - rpm
     - snapd
+git:
+  depth: 1
+go:
+  - 1.12.x
 env:
 - PATH=/snap/bin:$PATH
 install:
 - sudo snap install snapcraft --classic
+- GO111MODULE=on go get -u
 services:
 - docker
 after_success:
@@ -16,7 +21,7 @@ after_success:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: env GO111MODULE=on go get -u && curl -sL https://git.io/goreleaser | bash
+  script: curl -sL https://git.io/goreleaser | bash
   on:
     tags: true
     condition: "$TRAVIS_OS_NAME = linux"
