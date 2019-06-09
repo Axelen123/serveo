@@ -1,3 +1,6 @@
+# Secrets
+snap.login
+
 # Binaries for programs and plugins
 dist
 /serveo

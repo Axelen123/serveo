@@ -1,5 +1,4 @@
-# This is an example goreleaser.yaml file with some sane defaults.
-# Make sure to check the documentation at http://goreleaser.com
+# .goreleaser.yml
 before:
   hooks:
     # you may remove this if you don't use vgo
@@ -7,8 +6,51 @@ before:
     # you may remove this if you don't need go generate
     - go generate ./...
 builds:
-- env:
-  - CGO_ENABLED=0
+  - 
+    id: serveo
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    main: ./cmd/serveo
+    ldflags:
+      - -s -w
+nfpms:
+  -
+    id: serveo
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    replacements:
+      amd64: 64-bit
+      386: 32-bit
+      darwin: macOS
+      linux: Linux
+    vendor: Ax333l
+    homepage: https://github.com/Axelen123/serveo
+    maintainer: Ax333l
+    builds:
+      - serveo
+    description: Unofficial serveo.net CLI
+    license: MIT
+    formats:
+      - deb
+    dependencies:
+      - openssh-client
+    bindir: /usr/bin
+snapcrafts:
+  -
+    id: serveo
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    replacements:
+      amd64: 64-bit
+      386: 32-bit
+      darwin: macOS
+      linux: Linux
+    builds:
+      - serveo
+    summary: Unofficial serveo.net CLI
+    description: Unofficial serveo.net CLI
+    license: MIT
+    confinement: strict
+    base: core18
 archives:
 - replacements:
     darwin: Darwin
@@ -24,5 +66,5 @@ changelog:
   sort: asc
   filters:
     exclude:
-    - '^docs:'
-    - '^test:'
+      - '^docs:'
+      - '^test:'
