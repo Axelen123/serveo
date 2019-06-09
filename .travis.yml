@@ -10,7 +10,8 @@ go:
   - 1.12.x
 env:
 - PATH=/snap/bin:$PATH
-install: true
+- GO111MODULE=on
+install: sudo snap install snapcraft --classic
 services:
 - docker
 after_success:
@@ -24,6 +25,5 @@ deploy:
     tags: true
     condition: "$TRAVIS_OS_NAME = linux"
 before_install:
-- sudo snap install snapcraft --classic
 - openssl aes-256-cbc -K $encrypted_576ea288b03a_key -iv $encrypted_576ea288b03a_iv
   -in snap.login.enc -out snap.login -d
