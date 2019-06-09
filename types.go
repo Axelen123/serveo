@@ -62,12 +62,14 @@ type TCP struct {
 type Commands struct {
 	Init bool
 	SSH  bool
+	HTTP bool
 }
 
 // Flags holds parsed flags
 type Flags struct {
 	Config string
 	Domain string
+	Port   int
 }
 
 // Args holds parsed command line arguments

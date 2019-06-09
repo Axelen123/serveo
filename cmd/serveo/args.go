@@ -23,12 +23,15 @@ func parse() *serveo.Args {
 
 	init := parser.NewCommand("init", "Generate config file")
 
-	ssh := parser.NewCommand("ssh", "Expose SSH")
+	ssh := parser.NewCommand("ssh", "Expose SSH Server")
+
+	http := parser.NewCommand("http", "Expose HTTP Server")
+	port := http.Int("p", "port", &argparse.Options{Required: false, Help: "Set port", Default: 80})
 
 	err = parser.Parse(os.Args)
 	if err != nil {
 		fmt.Print(parser.Usage(err))
 		os.Exit(1)
 	}
-	return &serveo.Args{Commands: serveo.Commands{Init: init.Happened(), SSH: ssh.Happened()}, Flags: serveo.Flags{Config: *config, Domain: *domain}}
+	return &serveo.Args{Commands: serveo.Commands{Init: init.Happened(), SSH: ssh.Happened(), HTTP: http.Happened()}, Flags: serveo.Flags{Config: *config, Port: *port, Domain: *domain}}
 }

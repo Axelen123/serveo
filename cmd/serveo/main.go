@@ -19,8 +19,9 @@ func main() {
 		fmt.Println("Successfully generated config file")
 		return
 	} else if args.Commands.SSH {
-		fmt.Println("Exposing SSH server...")
-
+		serveo.Start(&serveo.Config{HTTP: -1, SSH: true, Domain: args.Flags.Domain, TCP: []serveo.TCP{}})
+	} else if args.Commands.HTTP {
+		serveo.Start(&serveo.Config{HTTP: args.Flags.Port, SSH: false, Domain: args.Flags.Domain, TCP: []serveo.TCP{}})
 	}
 	conf, err := serveo.GetConfig(args.Flags.Config)
 	if err != nil {
