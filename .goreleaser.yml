@@ -50,7 +50,7 @@ snapcrafts:
     summary: Unofficial serveo.net CLI
     description: Unofficial serveo.net CLI
     license: MIT
-    confinement: classic
+    confinement: strict
     base: bare
     publish: true
 archives:
