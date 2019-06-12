@@ -27,14 +27,15 @@ func GetConfig(filename string) (*Config, error) {
 
 	conf := new(Config)
 	err = json.Unmarshal(data, conf)
-	if err == nil {
-		for _, f := range conf.TCP {
-			if f.Local.Host == "" {
-				f.Local.Host = "localhost"
-			}
+	if err != nil {
+		return nil, err
+	}
+	for i, f := range conf.TCP {
+		if f.Local.Host == "" {
+			conf.TCP[i].Local.Host = "localhost"
 		}
 	}
-	return conf, err
+	return conf, nil
 }
 
 // Endpoint holds endpoint information
@@ -43,7 +44,7 @@ type Endpoint struct {
 	Port int    `json:"port"`
 }
 
-func (e *Endpoint) String() string {
+func (e Endpoint) String() string {
 	port := strconv.Itoa(e.Port)
 
 	if e.Host != "" {
